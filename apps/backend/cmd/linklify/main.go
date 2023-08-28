@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"linklifyBackend/internal/pkg/app"
+)
 
 func main() {
-	fmt.Println("Hello, world")
+	app := app.New()
+
+	if err := app.Run(); err != nil {
+		panic(err)
+	}
 }

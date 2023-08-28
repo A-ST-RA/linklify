@@ -1,4 +1,4 @@
-module linklify-backend
+module linklifyBackend
 
 go 1.21.0
 

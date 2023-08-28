@@ -9,6 +9,10 @@ type ShortenedLinkModel struct {
 type LinkShortenerService struct {
 }
 
+func NewLinkShortenerService() *LinkShortenerService {
+	return &LinkShortenerService{}
+}
+
 func (s *LinkShortenerService) createShortedLink(name string) {
-	
+
 }

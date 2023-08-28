@@ -10,7 +10,7 @@ func TestOfEncodeBase62Function(t *testing.T) {
 
 	data, _ := base62Encoder.Encode("aaaa")
 
-	if data == "JDE3Lh4cZcv" {
+	if data != "JDE3Lh4cZcv" {
 		t.Errorf("Encode(\"aaaa\") = %s, want JDE3Lh4cZcv", data)
 	}
 }
