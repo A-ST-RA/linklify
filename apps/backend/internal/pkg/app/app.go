@@ -1,6 +1,7 @@
 package app
 
 import (
+	"linklifyBackend/internal/config"
 	"linklifyBackend/internal/linkShortener"
 
 	"github.com/gofiber/fiber/v2"
@@ -12,12 +13,16 @@ type App struct {
 }
 
 func New() *App {
+	if err := config.InitializeConfig(); err != nil {
+		panic(err)
+	}
+	
 	fApp := fiber.New(fiber.Config{
 		Prefork:       true,
 		CaseSensitive: true,
 		StrictRouting: true,
-		ServerHeader:  "Linklify",
-		AppName:       "Linklify",
+		ServerHeader:  config.AppConfig.AppName,
+		AppName:       config.AppConfig.AppName,
 	})
 
 	ls := linkShortener.New(fApp)
@@ -33,7 +38,7 @@ func (a *App) Run() error {
 		return err
 	}
 
-	a.fApp.Listen(":8080")
+	a.fApp.Listen(":" + config.AppConfig.Port)
 
 	return nil
 }

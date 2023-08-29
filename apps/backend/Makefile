@@ -7,3 +7,9 @@ build:
 
 run:
 	$(PATH_TO_BUILDED)$(APP_NAME)
+	
+install:
+	go mod download
+	
+run-dev:
+	go run $(PATH_TO_MAIN)
